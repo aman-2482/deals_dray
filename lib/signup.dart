@@ -26,7 +26,7 @@ class _SignupScreenState extends State<SignupScreen> {
     };
 
     try {
-      // Send the POST request
+
       var response = await http.post(
         Uri.parse('http://devapiv4.dealsdray.com/api/v2/user/email/referral'),
         headers: {
@@ -39,18 +39,15 @@ class _SignupScreenState extends State<SignupScreen> {
         var responseData = jsonDecode(response.body);
         print('Success: $responseData');
 
-        // Navigate to HomeScreen after successful signup
         Navigator.pushReplacementNamed(context, '/home');
       } else {
         print('Failed to register: ${response.body}');
-        // Handle failure case, e.g., show a snackbar with the error message
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed to register: ${response.body}')),
         );
       }
     } catch (error) {
       print('Error: $error');
-      // Handle error case, e.g., show a snackbar with the error message
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Error: $error')),
       );

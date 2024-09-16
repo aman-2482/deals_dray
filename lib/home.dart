@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'navbar.dart'; // Assuming this contains the BottomNavBar content
+import 'navbar.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
         title: Container(
           padding: EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(
-            color: Colors.grey.shade200, // Search bar background color
+            color: Colors.grey.shade200,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Row(
@@ -25,7 +25,6 @@ class HomeScreen extends StatelessWidget {
                     border: InputBorder.none,
                   ),
                   onSubmitted: (value) {
-                    // Handle search input
                     print("Search: $value");
                   },
                 ),
@@ -38,7 +37,7 @@ class HomeScreen extends StatelessWidget {
             return IconButton(
               icon: Icon(Icons.menu, color: Colors.black),
               onPressed: () {
-                Scaffold.of(context).openDrawer(); // Open the drawer
+                Scaffold.of(context).openDrawer();
               },
             );
           },
@@ -46,9 +45,7 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(Icons.notifications, color: Colors.black),
-            onPressed: () {
-              // Handle notification click
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -72,31 +69,28 @@ class HomeScreen extends StatelessWidget {
               leading: Icon(Icons.home),
               title: Text('Home'),
               onTap: () {
-                Navigator.pop(context); // Close the drawer
+                Navigator.pop(context);
               },
             ),
             ListTile(
               leading: Icon(Icons.shopping_cart),
               title: Text('Cart'),
               onTap: () {
-                Navigator.pop(context); // Close the drawer
-                // Navigate to Cart screen
+                Navigator.pop(context);
               },
             ),
             ListTile(
               leading: Icon(Icons.person),
               title: Text('Profile'),
               onTap: () {
-                Navigator.pop(context); // Close the drawer
-                // Navigate to Profile screen
+                Navigator.pop(context);
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Settings'),
               onTap: () {
-                Navigator.pop(context); // Close the drawer
-                // Navigate to Settings screen
+                Navigator.pop(context);
               },
             ),
           ],
@@ -105,13 +99,12 @@ class HomeScreen extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.all(16.0),
         children: [
-          // Top Banner Section
           Container(
             height: 250,
-            padding: EdgeInsets.all(10.0), // Add padding around the container
+            padding: EdgeInsets.all(10.0),
             child: ListView(
-              scrollDirection: Axis.horizontal, // Set the scroll direction to horizontal
-              padding: EdgeInsets.zero, // No padding around the list for a cleaner look
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.zero,
               children: [
                 BuildClickableCard(context, "Realme P2 pro", "images/3.png", 'Redmi Page', "14% Off"),
                 SizedBox(width: 10),
@@ -122,7 +115,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          // KYC Box with updated decoration
           Container(
             padding: EdgeInsets.symmetric(vertical: 16),
             decoration: BoxDecoration(
@@ -138,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 5,
-                  offset: Offset(0, 3), // changes position of shadow
+                  offset: Offset(0, 3),
                 ),
               ],
             ),
@@ -160,7 +152,6 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(height: 10),
                 GestureDetector(
                   onTap: () {
-                    // Handle KYC Click
                     print('KYC Clicked');
                   },
                   child: Text(
@@ -176,7 +167,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
-          // Section with Icons
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -187,17 +177,16 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           SizedBox(height: 20),
-          // Exclusive Section
           Container(
             decoration: BoxDecoration(
-              color: Color(0xFFEBF7FF), // Similar background color to the image
+              color: Color(0xFFEBF7FF),
               borderRadius: BorderRadius.circular(10),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 5,
-                  offset: Offset(0, 3), // changes position of shadow
+                  offset: Offset(0, 3),
                 ),
               ],
             ),
@@ -212,32 +201,30 @@ class HomeScreen extends StatelessWidget {
                       'EXCLUSIVE FOR YOU',
                       style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
-                    Icon(Icons.arrow_forward), // Arrow icon
+                    Icon(Icons.arrow_forward),
                   ],
                 ),
                 SizedBox(height: 10),
                 Container(
-                  height: 250, // Adjust the height for horizontal scrolling
+                  height: 250,
                   child: ListView(
-                    scrollDirection: Axis.horizontal, // Set the scroll direction to horizontal
-                    padding: EdgeInsets.all(8.0), // Add padding around the list
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.all(8.0),
                     children: [
                       buildClickableCard(context, "Nokia 8.1", "images/8.png", 'Nokia Page', "32% Off"),
-                      SizedBox(width: 10), // Use width instead of height for horizontal spacing
+                      SizedBox(width: 10),
                       buildClickableCard(context, "Redmi Phone", "images/9.png", 'Redmi Page', "14% Off"),
                       SizedBox(width: 10),
-                      // Add more cards as needed
                       buildClickableCard(context, "iPhone 12", "images/10.png", 'iPhone Page', "10% Off"),
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(), // Make sure BottomNavBar is called here as well
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 
@@ -261,15 +248,13 @@ class HomeScreen extends StatelessWidget {
   Widget buildClickableCard(BuildContext context, String title, String imagePath, String routeName, String discount) {
     return GestureDetector(
       onTap: () {
-        // Navigate to detail page on image click
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => DetailScreen(title: title)),
         );
       },
-      child: Container(// Full width
-
-        padding: EdgeInsets.all(8), // Padding around the container
+      child: Container(
+        padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8),
@@ -278,7 +263,7 @@ class HomeScreen extends StatelessWidget {
               color: Colors.grey.withOpacity(0.3),
               spreadRadius: 1,
               blurRadius: 5,
-              offset: Offset(0, 2), // Shadow effect
+              offset: Offset(0, 2),
             ),
           ],
         ),
@@ -316,20 +301,17 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-
-
   Widget BuildClickableCard(BuildContext context, String title, String imagePath, String routeName, String discount) {
     return GestureDetector(
       onTap: () {
-        // Navigate to detail page on image click
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => DetailScreen(title: title)),
         );
       },
-      child: Container(// Full width
+      child: Container(
         width: 470,
-        padding: EdgeInsets.all(8), // Padding around the container
+        padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8),
@@ -338,7 +320,7 @@ class HomeScreen extends StatelessWidget {
               color: Colors.grey.withOpacity(0.3),
               spreadRadius: 1,
               blurRadius: 5,
-              offset: Offset(0, 2), // Shadow effect
+              offset: Offset(0, 2),
             ),
           ],
         ),
@@ -375,7 +357,6 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class DetailScreen extends StatelessWidget {

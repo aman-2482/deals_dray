@@ -30,7 +30,7 @@ class BottomNavBar extends StatelessWidget {
       currentIndex: 0,
       selectedItemColor: Colors.redAccent,
       onTap: (index) {
-        // Handle navigation logic here
+
         print("Tapped item index: $index");
       },
     );

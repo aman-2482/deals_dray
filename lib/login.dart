@@ -11,8 +11,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  bool isPhoneSelected = true; // Track whether phone or email is selected
-  bool isLoading = false; // Show loading indicator
+  bool isPhoneSelected = true;
+  bool isLoading = false;
 
   // Static mobile number and deviceId for API call
   final String staticMobileNumber = "9011470243";
@@ -21,15 +21,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
-  // Function to call OTP generator API with static data
+
   Future<void> sendOtp() async {
     setState(() {
-      isLoading = true; // Show loading indicator
+      isLoading = true;
     });
 
     final url = 'http://devapiv4.dealsdray.com/api/v2/user/otp';
 
-    // Hardcoded data for mobile number and deviceId
     final otpData = {
       "mobileNumber": staticMobileNumber,
       "deviceId": staticDeviceId,
@@ -70,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
       );
     } finally {
       setState(() {
-        isLoading = false; // Hide loading indicator
+        isLoading = false;
       });
     }
   }
@@ -96,12 +95,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Align(
                   alignment: Alignment.topCenter,
                   child: Image.asset(
-                    'images/logo.png', // Make sure the logo is added to your assets folder
-                    height: 150, // Adjust the height of the logo as needed
+                    'images/logo.png',
+                    height: 150,
                   ),
                 ),
               ),
-              SizedBox(height: 20), // Add spacing between logo and content
+              SizedBox(height: 20),
 
               // App welcome text
               Text(
@@ -166,7 +165,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
               SizedBox(height: 20),
 
-              // Input fields based on the selected login method
               if (isPhoneSelected)
                 TextField(
                   controller: phoneController,
@@ -187,7 +185,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               SizedBox(height: 40),
 
-              // Button to send OTP or login with Email
               ElevatedButton(
                 onPressed: isPhoneSelected ? (isLoading ? null : sendOtp) : (isLoading ? null : loginWithEmail),
                 child: isLoading
@@ -205,17 +202,16 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 40),
 
-              // "Don't have an account? Sign up" text link
               GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, '/signup'); // Navigate to signup screen
+                  Navigator.pushNamed(context, '/signup');
                 },
                 child: Text(
                   "Don't have an account? Sign up",
                   style: TextStyle(
                     color: Colors.blue, // Link color
                     fontSize: 16,
-                    decoration: TextDecoration.underline, // Underline the text to make it look like a link
+                    decoration: TextDecoration.underline,
                   ),
                 ),
               ),

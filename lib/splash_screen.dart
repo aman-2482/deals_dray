@@ -16,16 +16,13 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     DeviceRegistration deviceRegistration = DeviceRegistration();
     deviceRegistration.registerDevice();
 
-    // Initialize AnimationController
     _animationController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3), // Duration of the animation (3 seconds)
+      duration: Duration(seconds: 3),
     );
 
-    // Start the animation
     _animationController.forward();
 
-    // Navigate to login screen after the animation completes
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         Navigator.pushReplacementNamed(context, '/login');
@@ -35,7 +32,6 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   @override
   void dispose() {
-    // Dispose of the AnimationController when the widget is disposed
     _animationController.dispose();
     super.dispose();
   }
@@ -60,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 50.0), // Adjust this value to move it further up or down
+              padding: const EdgeInsets.only(bottom: 50.0),
               child: AnimatedBuilder(
                 animation: _animationController,
                 builder: (context, child) {

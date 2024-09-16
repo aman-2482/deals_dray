@@ -105,12 +105,12 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               ),
             ElevatedButton(
               onPressed: () {
-                // Directly navigate to the home screen
+
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Navigating to Home Screen!')),
                 );
 
-                // Delay to show the Snackbar
+
                 Future.delayed(Duration(seconds: 1), () {
                   Navigator.pushReplacementNamed(context, '/home');
                 });
